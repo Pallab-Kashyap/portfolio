@@ -339,7 +339,7 @@ const projects: Project[] = [
       "/assets/projects-screenshots/yatripay/3.png",
     ],
     live: "https://yatripay.com",
-    github: "https://github.com/Pallab-Kashyap/yatripay-frontend",
+    github: "https://github.com/Pallab-Kashyap/YoPayX",
     skills: {
       frontend: [
         PROJECT_SKILLS.ts,
@@ -533,7 +533,7 @@ const projects: Project[] = [
       "/assets/projects-screenshots/portfolio/navbar.png",
       "/assets/projects-screenshots/portfolio/project.png",
     ],
-    live: "https://pallabkashyap.tech",
+    live: "https://pallab.kshyp.tech",
     github: "https://github.com/pallab-kashyap/portfolio",
     skills: {
       frontend: [
