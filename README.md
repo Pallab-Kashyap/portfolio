@@ -6,7 +6,7 @@ Welcome to the repository for my personal portfolio website! 🎉 This project i
 
 ### Live preview: https://pallab.kshyp.tech/
 
-This project is **inspired** by the amazing work of [Naresh Khatri](https://github.com/Naresh-Khatri/Portfolio). His innovative approach to web design and attention to detail has been a huge influence. Thank you, Naresh! 🙏
+<!-- This project is **inspired** by the amazing work of [Naresh Khatri](https://github.com/Naresh-Khatri/Portfolio). His innovative approach to web design and attention to detail has been a huge influence. Thank you, Naresh! 🙏 -->
 
 ## 🔥 Features
 

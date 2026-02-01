@@ -44,6 +44,7 @@ import {
   SiArduino,
   SiRedis,
   SiAxios,
+  SiAmazonaws,
 } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
 import css from "styled-jsx/css";
@@ -314,6 +315,12 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiAxios />,
   },
+  aws: {
+    title: "AWS",
+    bg: "black",
+    fg: "white",
+    icon: <SiAmazonaws />,
+  },
 };
 export type Project = {
   id: string;
@@ -330,7 +337,7 @@ const projects: Project[] = [
   // 01 — YatriPay
   {
     id: "yatripay",
-    category: "FinTech",
+    category: "Freelance - FinTech",
     title: "YatriPay",
     src: "/assets/projects-screenshots/yatripay/1.png",
     screenshots: [
@@ -339,7 +346,7 @@ const projects: Project[] = [
       "/assets/projects-screenshots/yatripay/3.png",
     ],
     live: "https://yatripay.com",
-    github: "https://github.com/Pallab-Kashyap/YoPayX",
+    // github: "https://github.com/Pallab-Kashyap/YoPayX",
     skills: {
       frontend: [
         PROJECT_SKILLS.ts,
@@ -347,7 +354,13 @@ const projects: Project[] = [
         PROJECT_SKILLS.tailwind,
         PROJECT_SKILLS.axios,
       ],
-      backend: [],
+      backend: [
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.redis,
+        PROJECT_SKILLS.docker,
+        PROJECT_SKILLS.aws,
+      ],
     },
     get content() {
       return (
@@ -367,7 +380,94 @@ const projects: Project[] = [
     },
   },
 
-  // 02 — Pixello (Canva-like editor)
+  // 02 — InnoStart
+  {
+    id: "innostart",
+    category: "Freelance - Backend Systems",
+    title: "InnoStart",
+    src: "/assets/projects-screenshots/innostart/phone-display.png",
+    screenshots: [
+      "/assets/projects-screenshots/innostart/video-upload.png",
+      "/assets/projects-screenshots/innostart/video-stream.png",
+      "/assets/projects-screenshots/innostart/engagement.png",
+    ],
+    live: "https://pallab.kshyp.tech",
+    // github: "/",
+    skills: {
+      frontend: [],
+      backend: [
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.redis,
+        PROJECT_SKILLS.sockerio,
+        PROJECT_SKILLS.aws,
+      ],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            A collaborative platform that connects innovators and startups,
+            enabling them to share pitch decks, content, discover funding
+            opportunities, and participate in grants and innovation challenges
+            to accelerate growth.
+          </TypographyP>
+
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <SlideShow images={this.screenshots} />
+        </div>
+      );
+    },
+  },
+
+  // 03 — Bhandara
+  {
+    id: "bhandara",
+    category: "Freelance - Full stack",
+    title: "Bhandara",
+    src: "/assets/projects-screenshots/bhandara/landing.png",
+    screenshots: [
+      "/assets/projects-screenshots/bhandara/architecture.png",
+      "/assets/projects-screenshots/bhandara/landing.png",
+      "/assets/projects-screenshots/bhandara/app.png",
+    ],
+    live: "https://www.bhandara.app/",
+    // github: "https://github.com/Pallab-Kashyap/inventory_server",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.axios,
+        PROJECT_SKILLS.reactQuery,
+      ],
+      backend: [
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.prisma,
+        PROJECT_SKILLS.postgres,
+        PROJECT_SKILLS.docker,
+        PROJECT_SKILLS.aws,
+      ],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            A community-driven platform to discover, organize, and share
+            Bhandara events across India. The platform helps users locate nearby
+            Bhandaras with accurate details, timings, and locations, while
+            ensuring a safe and respectful experience through image content
+            moderation.
+          </TypographyP>
+
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <SlideShow images={this.screenshots} />
+        </div>
+      );
+    },
+  },
+
+  // 04 — Pixello (Canva-like editor)
   {
     id: "pixello",
     category: "Design Editor",
@@ -387,7 +487,12 @@ const projects: Project[] = [
         PROJECT_SKILLS.tailwind,
         PROJECT_SKILLS.shadcn,
       ],
-      backend: [],
+      backend: [
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.mongo,
+        PROJECT_SKILLS.docker,
+        PROJECT_SKILLS.aws,
+      ],
     },
     get content() {
       return (
@@ -407,7 +512,7 @@ const projects: Project[] = [
     },
   },
 
-  // 03 — Sociofy
+  // 05 — Sociofy
   {
     id: "sociofy",
     category: "Social Media",
@@ -427,7 +532,12 @@ const projects: Project[] = [
         PROJECT_SKILLS.tailwind,
         PROJECT_SKILLS.shadcn,
       ],
-      backend: [PROJECT_SKILLS.sockerio],
+      backend: [
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.sockerio,
+        PROJECT_SKILLS.redis,
+        PROJECT_SKILLS.docker,
+      ],
     },
     get content() {
       return (
@@ -445,14 +555,14 @@ const projects: Project[] = [
     },
   },
 
-  // 04 — Chess Master Server
+  // 06 — Chess Master Server
   {
     id: "chessmaster",
     category: "Systems & Real-Time",
     title: "Chess Server",
-    src: "/assets/projects-screenshots/chessServer/1.webp",
+    src: "/assets/projects-screenshots/chessServer/architecture.png",
     screenshots: [
-      "/assets/projects-screenshots/chessServer/1.webp",
+      "/assets/projects-screenshots/chessServer/architecture.png",
       // "/assets/projects-screenshots/chessServer/2.png",
     ],
     live: "https://github.com/Pallab-Kashyap/chess-master-server",
@@ -475,83 +585,6 @@ const projects: Project[] = [
             in-memory game state, Kafka for event streaming and persistence,
             MongoDB for storage, and Socket.io for low-latency realtime gameplay
             with automated game analysis.
-          </TypographyP>
-
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <SlideShow images={this.screenshots} />
-        </div>
-      );
-    },
-  },
-
-  // 05 — StockFlow Inventory Server
-  {
-    id: "inventoryserver",
-    category: "Backend Systems",
-    title: "StockFlow Inventory Backend",
-    src: "/assets/projects-screenshots/stockflowServer/1.png",
-    screenshots: [
-      "/assets/projects-screenshots/stockflowServer/1.png",
-      "/assets/projects-screenshots/stockflowServer/2.jpg",
-    ],
-    live: "https://github.com/Pallab-Kashyap/inventory_server",
-    github: "https://github.com/Pallab-Kashyap/inventory_server",
-    skills: {
-      frontend: [],
-      backend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.prisma,
-        PROJECT_SKILLS.postgres,
-        PROJECT_SKILLS.docker,
-      ],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            A production-ready inventory management backend supporting multiple
-            stores, product variations, stock operations, and image storage
-            using AWS S3 / Cloudinary. Built with TypeScript, Prisma,
-            PostgreSQL, and Docker for easy self-hosting.
-          </TypographyP>
-
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <SlideShow images={this.screenshots} />
-        </div>
-      );
-    },
-  },
-
-  // 06 — Portfolio
-  {
-    id: "portfolio",
-    category: "Portfolio",
-    title: "My Portfolio",
-    src: "/assets/projects-screenshots/portfolio/landing.png",
-    screenshots: [
-      "/assets/projects-screenshots/portfolio/landing.png",
-      "/assets/projects-screenshots/portfolio/navbar.png",
-      "/assets/projects-screenshots/portfolio/project.png",
-    ],
-    live: "https://pallab.kshyp.tech",
-    github: "https://github.com/pallab-kashyap/portfolio",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.tailwind,
-        PROJECT_SKILLS.framerMotion,
-        PROJECT_SKILLS.shadcn,
-      ],
-      backend: [],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            My personal 3D-inspired interactive portfolio showcasing my
-            projects, backend systems, real-time apps, and design-focused
-            interfaces. Built with modern tooling and animations.
           </TypographyP>
 
           <ProjectsLinks live={this.live} repo={this.github} />
