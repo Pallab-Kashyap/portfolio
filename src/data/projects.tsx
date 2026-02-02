@@ -350,7 +350,6 @@ const projects: Project[] = [
       "/assets/projects-screenshots/yatripay/3.png",
     ],
     live: "https://yatripay.com",
-    // github: "https://github.com/Pallab-Kashyap/YoPayX",
     skills: {
       frontend: [
         PROJECT_SKILLS.ts,
@@ -397,7 +396,6 @@ const projects: Project[] = [
       "/assets/projects-screenshots/innostart/engagement.png",
     ],
     live: "https://pallab.kshyp.tech",
-    // github: "/",
     skills: {
       frontend: [],
       backend: [
@@ -438,7 +436,6 @@ const projects: Project[] = [
       "/assets/projects-screenshots/bhandara/app.png",
     ],
     live: "https://www.bhandara.app/",
-    // github: "https://github.com/Pallab-Kashyap/inventory_server",
     skills: {
       frontend: [
         PROJECT_SKILLS.react,
@@ -603,7 +600,132 @@ const projects: Project[] = [
     },
   },
 
-  
+  // 07 — Youtube-contnet generator
+  {
+    id: "youtube-content-generator",
+    category: "AI Tools",
+    title: "YouTube Content Generator",
+    type: "personal",
+    src: "/assets/projects-screenshots/youtube-content-generator/landing.png",
+    screenshots: [
+      "/assets/projects-screenshots/youtube-content-generator/landing.png",
+      "/assets/projects-screenshots/youtube-content-generator/dashboard.png",
+      "/assets/projects-screenshots/youtube-content-generator/thumbnail.png",
+      "/assets/projects-screenshots/youtube-content-generator/search.png",
+    ],
+    live: "https://youtube-content-genrator-v2dh.vercel.app/",
+    github: "https://github.com/Pallab-Kashyap/yt-content-generation",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.shadcn,
+      ],
+      backend: [
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.openai,
+        PROJECT_SKILLS.docker,
+        PROJECT_SKILLS.aws,
+      ],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            An AI-powered tool that generates YouTube video thumbnail, content,
+            keywords, outliers based on a given topic, idea.
+          </TypographyP>
+
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <SlideShow images={this.screenshots} />
+        </div>
+      );
+    },
+  },
+
+  // 08 — Polygen
+  {
+    id: "polygen",
+    category: "Ecommerce",
+    title: "Polygen",
+    type: "freelance",
+    src: "/assets/projects-screenshots/polygen/landing.png",
+    screenshots: [
+      "/assets/projects-screenshots/polygen/landing.png",
+      "/assets/projects-screenshots/polygen/admin.png",
+      "/assets/projects-screenshots/polygen/product-form-1.png",
+      "/assets/projects-screenshots/polygen/product-form-2.png",
+    ],
+    live: "https://polygen.kshyp.tech",
+    github: "https://github.com/Pallab-Kashyap/polygen",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.shadcn,
+      ],
+      backend: []
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            An e-commerce platform for electronics featuring product listings,
+            blogs with powerful dashboard managing and bulk uploading of products
+            and dynamic content generation.
+          </TypographyP>
+
+          <ProjectsLinks live={this.live} repo={this.github} />
+
+          <SlideShow images={this.screenshots} />
+        </div>
+      );
+    },
+  },
+
+  // 09 — RBF
+  {
+    id: "rbf",
+    category: "Bio Fuels",
+    title: "RBF Industries",
+    type: "freelance",
+    src: "/assets/projects-screenshots/rbf/landing.png",
+    screenshots: [
+      "/assets/projects-screenshots/rbf/landing.png",
+      "/assets/projects-screenshots/rbf/process.png",
+      "/assets/projects-screenshots/rbf/about.png",
+      "/assets/projects-screenshots/rbf/blog.png",
+    ],
+    live: "https://rbfindustries.in",
+    github: "https://github.com/Pallab-Kashyap/rbf-industries",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.shadcn,
+        PROJECT_SKILLS.framerMotion
+      ],
+      backend: []
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            A corporate website for RBF Industries, a leading biofuel company,
+            showcasing their sustainable energy solutions and commitment to a
+            greener future.
+          </TypographyP>
+
+          <ProjectsLinks live={this.live} repo={this.github} />
+
+          <SlideShow images={this.screenshots} />
+        </div>
+      );
+    }
+  },
 ];
 
 export default projects;
