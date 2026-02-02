@@ -1,155 +1,178 @@
 "use client";
 import Image from "next/image";
+import React, { useState } from "react";
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalTrigger,
+} from "@/components/ui/animated-modal";
+import { FloatingDock } from "@/components/ui/floating-dock";
 import Link from "next/link";
-import React from "react";
-// @ts-ignore
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css/core";
 
-import "@splidejs/react-splide/css";
+import SmoothScroll from "@/components/smooth-scroll";
+import projects, { Project, ProjectType } from "@/data/projects";
+import { cn } from "@/lib/utils";
+import { ArrowLeft } from "lucide-react";
 
-const PROJECTS = [
-  {
-    id: 1,
-    name: "YatriPay",
-    description: `A cryptocurrency and investment platform with a fully custom frontend.
-      Includes KYC flows, portfolio tracking, real-time price charts, secure wallet
-      operations, and smooth UI built with modern design principles.`,
-    link: "https://yatripay.com",
-    images: [
-      "/assets/projects-screenshots/myportfolio/landing.png",
-      "/assets/projects-screenshots/myportfolio/navbar.png",
-      "/assets/projects-screenshots/myportfolio/projects.png",
-      "/assets/projects-screenshots/myportfolio/project.png",
-    ],
-  },
+type FilterType = "all" | ProjectType;
 
-  {
-    id: 2,
-    name: "Pixello",
-    description: `A full-featured online design editor similar to Canva. Includes drag-and-drop
-      canvas editing, AI-powered image generation for pro users, prebuilt templates, and
-      integrated access to high-quality Unsplash stock images.`,
-    link: "https://pixello.kshyp.tech",
-    images: [
-      "/assets/projects-screenshots/myportfolio/landing.png",
-      "/assets/projects-screenshots/myportfolio/navbar.png",
-      "/assets/projects-screenshots/myportfolio/projects.png",
-      "/assets/projects-screenshots/myportfolio/project.png",
-    ],
-  },
-
-  {
-    id: 3,
-    name: "Sociofy",
-    description: `A social media platform inspired by Twitter with real-time chat using WebSockets,
-      hashtags, personalized feeds, posts, follows, and a responsive modern UI built with Next.js.`,
-    link: "https://sociofy.kshyp.tech",
-    images: [
-      "/assets/projects-screenshots/myportfolio/landing.png",
-      "/assets/projects-screenshots/myportfolio/navbar.png",
-      "/assets/projects-screenshots/myportfolio/projects.png",
-      "/assets/projects-screenshots/myportfolio/project.png",
-    ],
-  },
-
-  {
-    id: 4,
-    name: "Chess Server",
-    description: `A scalable real-time chess server like Chess.com, using Redis for game state,
-      Kafka for event persistence, MongoDB for storage, and Socket.io for low-latency move syncing
-      and automated game analysis.`,
-    link: "https://github.com/Pallab-Kashyap/chess-master-server",
-    images: [
-      "/assets/projects-screenshots/myportfolio/landing.png",
-      "/assets/projects-screenshots/myportfolio/navbar.png",
-      "/assets/projects-screenshots/myportfolio/projects.png",
-      "/assets/projects-screenshots/myportfolio/project.png",
-    ],
-  },
-
-  {
-    id: 5,
-    name: "StockFlow Inventory Server",
-    description: `A production-ready inventory management backend with multiple store support,
-      product variations, stock tracking, and media storage via AWS S3/Cloudinary. Built with
-      TypeScript, Prisma, and PostgreSQL.`,
-    link: "https://github.com/Pallab-Kashyap/inventory_server",
-    images: [
-      "/assets/projects-screenshots/myportfolio/landing.png",
-      "/assets/projects-screenshots/myportfolio/navbar.png",
-      "/assets/projects-screenshots/myportfolio/projects.png",
-      "/assets/projects-screenshots/myportfolio/project.png",
-    ],
-  },
-
-  {
-    id: 6,
-    name: "Portfolio",
-    description: `My personal portfolio showcasing projects, experience, and creativity through
-      a modern, animated, and responsive design.`,
-    link: "https://www.abhijitzende.com/",
-    images: [
-      "/assets/projects-screenshots/myportfolio/landing.png",
-      "/assets/projects-screenshots/myportfolio/navbar.png",
-      "/assets/projects-screenshots/myportfolio/projects.png",
-      "/assets/projects-screenshots/myportfolio/project.png",
-    ],
-  },
+const filters: { label: string; value: FilterType }[] = [
+  { label: "All", value: "all" },
+  { label: "Personal", value: "personal" },
+  { label: "Freelance", value: "freelance" },
 ];
 
-function Page() {
+const ProjectsPage = () => {
+  const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+
+  const filteredProjects =
+    activeFilter === "all"
+      ? projects
+      : projects.filter((project) => project.type === activeFilter);
+
+  return (
+    <section className="max-w-7xl mx-auto min-h-screen px-4 md:px-8 py-8">
+      {/* Back button */}
+      <Link
+        href="/#projects"
+        className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors mb-8"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        Back to Home
+      </Link>
+
+      <h2
+        className={cn(
+          "bg-clip-text text-4xl text-center text-transparent md:text-7xl pt-8",
+          "bg-gradient-to-b from-black/80 to-black/50",
+          "dark:bg-gradient-to-b dark:from-white/80 dark:to-white/20 dark:bg-opacity-50 mb-12",
+        )}
+      >
+        All Projects
+      </h2>
+
+      {/* Filter buttons */}
+      <div className="flex justify-center gap-3 mb-16">
+        {filters.map((filter) => (
+          <button
+            key={filter.value}
+            onClick={() => setActiveFilter(filter.value)}
+            className={cn(
+              "px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border",
+              activeFilter === filter.value
+                ? "bg-white text-black border-white"
+                : "bg-transparent text-white/70 border-white/20 hover:border-white/40 hover:text-white",
+            )}
+          >
+            {filter.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {filteredProjects.map((project) => (
+          <Modall key={project.id} project={project} />
+        ))}
+      </div>
+
+      {filteredProjects.length === 0 && (
+        <div className="text-center text-neutral-400 py-20">
+          No projects found for this filter.
+        </div>
+      )}
+    </section>
+  );
+};
+
+const Modall = ({ project }: { project: Project }) => {
+  return (
+    <div className="flex items-center justify-center">
+      <Modal>
+        <ModalTrigger className="bg-transparent flex justify-center group/modal-btn">
+          <div
+            className="relative w-[400px] h-auto rounded-lg overflow-hidden"
+            style={{ aspectRatio: "3/2" }}
+          >
+            <Image
+              className="absolute w-full h-full top-0 left-0 hover:scale-[1.05] transition-all"
+              src={project.src}
+              alt={project.title}
+              width={300}
+              height={300}
+            />
+            <div className="absolute w-full h-1/2 bottom-0 left-0 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none">
+              <div className="flex flex-col h-full items-start justify-end p-6">
+                <div className="text-lg text-left">{project.title}</div>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-xs bg-white text-black rounded-lg w-fit px-2">
+                    {project.category}
+                  </span>
+                  {/* <span
+                    className={cn(
+                      "text-xs rounded-lg w-fit px-2 capitalize",
+                      project.type === "freelance"
+                        ? "bg-green-500 text-white"
+                        : "bg-blue-500 text-white",
+                    )}
+                  >
+                    {project.type}
+                  </span> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </ModalTrigger>
+        <ModalBody className="md:max-w-4xl md:max-h-[80%] overflow-auto">
+          <SmoothScroll isInsideModal={true}>
+            <ModalContent>
+              <ProjectContents project={project} />
+            </ModalContent>
+          </SmoothScroll>
+          <ModalFooter className="gap-4">
+            <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
+              Cancel
+            </button>
+            <Link href={project.live} target="_blank">
+              <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
+                Visit
+              </button>
+            </Link>
+          </ModalFooter>
+        </ModalBody>
+      </Modal>
+    </div>
+  );
+};
+
+export default ProjectsPage;
+
+const ProjectContents = ({ project }: { project: Project }) => {
   return (
     <>
-      <div className="container mx-auto md:px-[50px] xl:px-[150px] text-zinc-300 h-full">
-        <h1 className="text-4xl mt-[100px] mb-[50px]">Projects</h1>
-        <ul className="grid  md:grid-cols-2 lg:grid-cols-3 gap-10 place-content-around ">
-          {PROJECTS.map((project) => (
-            <li
-              className="w-[300px] h-[400px] border-[.5px] rounded-md border-zinc-600"
-              key={project.id}
-              style={{ backdropFilter: "blur(2px)" }}
-            >
-              <div className="h-[200px]">
-                <Splide
-                  options={{
-                    type: "loop",
-                    interval: 3000,
-                    autoplay: true,
-                    speed: 2000,
-                    perMove: 1,
-                    rewind: true,
-                    easing: "cubic-bezier(0.25, 1, 0.5, 1)",
-                    arrows: false,
-                  }}
-                  aria-label="My Favorite Images"
-                >
-                  {project.images.map((image) => (
-                    <SplideSlide key={image}>
-                      <Image
-                        src={image}
-                        alt={`screenshot of "${project.name}`}
-                        className="w-[300px] h-[200px] rounded-md bg-zinc-900 "
-                        width={300}
-                        height={400}
-                        style={{ height: "200px" }}
-                      />
-                    </SplideSlide>
-                  ))}
-                </Splide>
-              </div>
-              <div className="p-4 text-zinc-300">
-                <h2 className="text-xl">{project.name}</h2>
-                <p className="mt-2 text-xs text-zinc-500">
-                  {project.description}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8">
+        {project.title}
+      </h4>
+      <div className="flex flex-col md:flex-row md:justify-evenly max-w-screen overflow-hidden md:overflow-visible">
+        <div className="flex flex-row md:flex-col-reverse justify-center items-center gap-2 text-3xl mb-8">
+          <p className="text-sm mt-1 text-neutral-600 dark:text-neutral-500">
+            Frontend
+          </p>
+          {project.skills.frontend?.length > 0 && (
+            <FloatingDock items={project.skills.frontend} />
+          )}
+        </div>
+        {project.skills.backend?.length > 0 && (
+          <div className="flex flex-row md:flex-col-reverse justify-center items-center gap-2 text-3xl mb-8">
+            <p className="text-sm mt-1 text-neutral-600 dark:text-neutral-500">
+              Backend
+            </p>
+            <FloatingDock items={project.skills.backend} />
+          </div>
+        )}
       </div>
+      {project.content}
     </>
   );
-}
-
-export default Page;
+};

@@ -14,6 +14,7 @@ import Link from "next/link";
 import SmoothScroll from "../smooth-scroll";
 import projects, { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 
 const ProjectsSection = () => {
   return (
@@ -30,9 +31,17 @@ const ProjectsSection = () => {
         </h2>
       </Link>
       <div className="grid grid-cols-1 md:grid-cols-3">
-        {projects.map((project, index) => (
+        {projects.slice(0, 6).map((project, index) => (
           <Modall key={project.src} project={project} />
         ))}
+      </div>
+      <div className="flex justify-center mt-12">
+        <Link href="/projects">
+          <button className="group flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 dark:bg-white/5 dark:hover:bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm font-medium transition-all duration-300">
+            View All Projects
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </Link>
       </div>
     </section>
   );

@@ -322,6 +322,8 @@ const PROJECT_SKILLS = {
     icon: <SiAmazonaws />,
   },
 };
+export type ProjectType = "personal" | "freelance";
+
 export type Project = {
   id: string;
   category: string;
@@ -332,6 +334,7 @@ export type Project = {
   content: React.ReactNode | any;
   github?: string;
   live: string;
+  type: ProjectType;
 };
 const projects: Project[] = [
   // 01 — YatriPay
@@ -339,6 +342,7 @@ const projects: Project[] = [
     id: "yatripay",
     category: "Freelance - FinTech",
     title: "YatriPay",
+    type: "freelance",
     src: "/assets/projects-screenshots/yatripay/1.png",
     screenshots: [
       "/assets/projects-screenshots/yatripay/1.png",
@@ -385,6 +389,7 @@ const projects: Project[] = [
     id: "innostart",
     category: "Freelance - Backend Systems",
     title: "InnoStart",
+    type: "freelance",
     src: "/assets/projects-screenshots/innostart/phone-display.png",
     screenshots: [
       "/assets/projects-screenshots/innostart/video-upload.png",
@@ -425,6 +430,7 @@ const projects: Project[] = [
     id: "bhandara",
     category: "Freelance - Full stack",
     title: "Bhandara",
+    type: "freelance",
     src: "/assets/projects-screenshots/bhandara/landing.png",
     screenshots: [
       "/assets/projects-screenshots/bhandara/architecture.png",
@@ -472,6 +478,7 @@ const projects: Project[] = [
     id: "pixello",
     category: "Design Editor",
     title: "Pixello — AI-Powered Design Editor",
+    type: "personal",
     src: "/assets/projects-screenshots/pixello/1.png",
     screenshots: [
       "/assets/projects-screenshots/pixello/1.png",
@@ -517,6 +524,7 @@ const projects: Project[] = [
     id: "sociofy",
     category: "Social Media",
     title: "Sociofy",
+    type: "personal",
     src: "/assets/projects-screenshots/sociofy/1.png",
     screenshots: [
       "/assets/projects-screenshots/sociofy/1.png",
@@ -560,6 +568,7 @@ const projects: Project[] = [
     id: "chessmaster",
     category: "Systems & Real-Time",
     title: "Chess Server",
+    type: "personal",
     src: "/assets/projects-screenshots/chessServer/architecture.png",
     screenshots: [
       "/assets/projects-screenshots/chessServer/architecture.png",
@@ -593,6 +602,8 @@ const projects: Project[] = [
       );
     },
   },
+
+  
 ];
 
 export default projects;
