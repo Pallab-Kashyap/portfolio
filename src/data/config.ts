@@ -33,7 +33,7 @@ const config = {
   ],
   author: "Pallab Kashyap",
   email: "pallabkshyp@gmail.com",
-  site: "https://pallab.kshyp.tech",
+  site: "https://pallab.kshyp.in",
 
   get ogImg() {
     return this.site + "/assets/seo/og-image.png";

@@ -482,7 +482,7 @@ const projects: Project[] = [
       "/assets/projects-screenshots/pixello/2.png",
       "/assets/projects-screenshots/pixello/3.png",
     ],
-    live: "https://pixello.kshyp.tech",
+    live: "https://pixello.kshyp.in",
     github: "https://github.com/pallab-kashyap/pixello",
     skills: {
       frontend: [
@@ -528,7 +528,7 @@ const projects: Project[] = [
       "/assets/projects-screenshots/sociofy/2.png",
       "/assets/projects-screenshots/sociofy/3.png",
     ],
-    live: "https://sociofy.kshyp.tech",
+    live: "https://sociofy.kshyp.in",
     github: "https://github.com/pallab-kashyap/sociofy",
     skills: {
       frontend: [
